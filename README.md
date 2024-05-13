@@ -20,18 +20,21 @@ Este projeto consiste em uma API Node.js que utiliza a biblioteca Tesseract.js p
 
 1. Clone o repositório:
 
-Markdown
-git clone https://github.com/seu-usuario/ocr-api.git
+``git clone https://github.com/jumpercs/ocr-verify``
+
 2. Instale as dependências:
 
-npm install
+`npm install`
+
 3. Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis de ambiente:
 
 PORT=7000
 UPLOAD_DIR=uploads/
+
+
 4. Inicie o servidor:
 
-npm start
+`npm start`
 ## Rotas da API
 
 **POST /upload**
