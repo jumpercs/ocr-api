@@ -41,16 +41,25 @@ async function uploadImagem(req, res) {
 
     const palavraExtraida = await extrairTextoDaImagem(imagePath);
 
-    const palavraOriginalMinuscula = texto.trim().toLowerCase();
+    const palavraOriginalMinuscula = texto.trim();
     const coincidencia = palavraExtraida === palavraOriginalMinuscula;
 
     fs.unlinkSync(imagePath);
+if (coincidencia) {
+      return res.json({
+        texto,
+        textoExtraido: palavraExtraida,
+        coincidencia
+      });
+    }
 
-    res.json({
-      texto,
-      textoExtraido: palavraExtraida,
-      coincidencia
-    });
+    else {
+      return res.status(400).json({
+        texto,
+        textoExtraido: palavraExtraida,
+        coincidencia
+      });
+    }
 
   } catch (error) {
     console.error('Erro ao processar OCR:', error);

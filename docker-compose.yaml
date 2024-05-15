@@ -1,8 +1,12 @@
 version: '3.8'
 
 services:
-  ocr-api:
+  ocr-verify:
     build: .
+    cpus: "1.0"        # Limita a 1 CPU
+    mem_limit: "512m"  # Limita a 512 MB de memória
+    memswap_limit: "1g" # Limita a 1 GB de memória swap
+    shm_size: "64m"     # Define 64 MB para /dev/shm
     ports:
       - "7000:7000"
     volumes:
@@ -14,11 +18,11 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "8080:8080"
+      - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - ocr-api
+      - ocr-verify
 
 volumes:
   uploads:

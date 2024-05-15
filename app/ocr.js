@@ -7,7 +7,7 @@ async function extrairTextoDaImagem(imagePath) {
       'por',
       { logger: m => console.log(`Tesseract: ${m}`) }
     );
-    return text.trim().toLowerCase();
+    return text.trim();
   } catch (error) {
     console.error('Erro ao processar OCR:', error);
     throw error; 
